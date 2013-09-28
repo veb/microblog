@@ -1,4 +1,5 @@
-from wtforms import Form, TextField, BooleanField, TextField, BooleanField, TextAreaField, validators
+from flask.ext.wtf import Form, TextField, BooleanField, TextAreaField
+from flask.ext.wtf import validators, Required, Length
 
 class EditForm(Form):
     nickname = TextField('nickname', [validators.Required()])
