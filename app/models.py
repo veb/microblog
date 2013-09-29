@@ -24,6 +24,9 @@ class User(db.Model):
             backref = db.backref('followers', lazy = 'dynamic'),
             lazy = 'dynamic')
 
+    def followed_posts(self):
+        return Post.query.join(followers, (followers.c.followed_id == Post.user_id)).filter(followers.c.follower_id == self.id).order_by(Post.timestamp.desc())
+
     def follow(self, user):
         if not self.is_following(user):
             self.followed.append(user)
@@ -35,7 +38,7 @@ class User(db.Model):
             return self
 
     def is_following(self, user):
-        return self.followed.filter(followers.c.followed_id == user.id).count > 0
+        return self.followed.filter(followers.c.followed_id == user.id).count() > 0
 
     def is_authenticated(self):
         return True
