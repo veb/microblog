@@ -6,7 +6,7 @@ from config import basedir
 from app import app, db
 from app.models import User
 
-class TestCase(unittest.TestCase) {
+class TestCase(unittest.TestCase):
         def setUp(self):
             app.config['TESTING'] = True
             app.config['CSRF_ENABLED'] = False
@@ -41,5 +41,5 @@ class TestCase(unittest.TestCase) {
             assert nickname2 != 'john'
             assert nickname2 !=  nickname
 
-if __name__ == '__main__'
+if __name__ == '__main__':
     unittest.main()
