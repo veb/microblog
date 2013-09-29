@@ -4,6 +4,11 @@ from hashlib import md5
 ROLE_USER = 0
 ROLE_ADMIN = 1
 
+followers = db.Table('followers',
+        db.Column('follower_id', db.Integer, db.ForeignKey('user_id')),
+        db.Column('followed_id', db.Integer, db.ForeignKey('user_id'))
+)
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     nickname = db.Column(db.String(64), index = True, unique = True)
