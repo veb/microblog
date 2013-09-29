@@ -9,3 +9,5 @@ dist
 _mailinglist
 .tox
 tmp/
+db_repository/
+app.db
